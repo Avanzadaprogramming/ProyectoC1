@@ -1,7 +1,11 @@
-import random
-def main():
-    a =str(random.randint(1,28))+"/"+str(random.randint(1,12))+"/"+str(random.randint(1990,2021))
-    print(a)
+class Persona:
+    def __init__(self,nom,ape):
+        self.nombre=nom
+        self.apellido=ape
 
-
-main()
+    def __str__(self):
+        cadena=self.nombre+",sdfa"+self.apellido
+        return cadena
+ 
+persona1=Persona("Jose","Rodriguez")
+print(persona1)

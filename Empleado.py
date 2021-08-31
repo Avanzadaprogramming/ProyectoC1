@@ -3,31 +3,10 @@ from io import open
 import random
 class Empleado(Persona):
     def __init__(self,Automatico,Genero="None",IdEmpleado=0):
-        if Automatico == True:
-            Persona.__init__(self,Automatico,Genero)
-            #BaseUniversidad
-            baseUnis = open("ArchivosTxT/Universidades.txt","r")
-            Unis = baseUnis.readline().strip().split(",")
 
-            self.id = IdEmpleado
-            
-            self.salario= random.randint(877802,5000000)
-
-            if self.salario> 1500000:
-                tipo = "Directivo"
-            else:
-                tipo = "Raso"
-            self.salario = str(self.salario)
-            self.tipo = tipo.lower()
-            self.ocupado = "Disponible"
-            if self.tipo == "directivo":
-                self.universidad = input("Nombre Universidad: ")
-            else:
-                self.univeri = "No Aplica"
-
-        else:
             print("---Ingrese la siguiente informacion del Empleado---") ##CAMBIO 2021
             Persona.__init__(self,Automatico, Genero="None")
+            ##Pedir en el main todos los datos de la persona y enviarlos aqui tambien
             self.id = IdEmpleado
             
             self.salario = input("Ingrese salario: ")

@@ -10,20 +10,38 @@ from Desfiles import Desfile
 from datetime import datetime
 from Eventos import Evento
 from Bandas import Banda
+from tkinter import *
+from tkinter import ttk 
+
 
 import random
 
+def mostrar(lista):
+    for i in lista:
+        print(i)
+    print("----------------------------------------------------")
+def newPerson():
+    #generar los datos de una persona 
+    B=0
+def newEmpleado():
+    #tiene que generar una persona antes
+    #Pasaria los argumentos para genearr una persona y 
+    #luego en esta funcion llamar a persona
+    #y generar empleado con base en eso datos
+    #QUEDE AQUIIIIIII
+    A=0
 
-def inicializacion():
-    while True:
-        print("-------------------Inicializacion Empresa---------------------")
-        print("1. Generacion Automatica de Personal (Empleados,Diseñadores,Modelos,etc)")
-        print("2. Ingresar Manualmente Personal (Empleados,Diseñadores,Modelos,etc)")
-        respuesta = int(input("Ingrese la opcion: "))
-        if respuesta == 1 or respuesta ==2:
-            break
-        else: print("Intentalo de nuevo")
-
+def main():
+    ventana  = Tk()
+    ventana.title("Parcial Corte 1 ")
+    ventana.geometry('980x680')
+    ventana.configure(background = '#151934')
+    nomEmpresa = input("Ingrese el nombre de la Empresa: ") 
+    ##Definicion de tratado de datos
+    ## importar todos los datos de las clases de las singuentes tablas
+    ##Importante recordar que lo que se agrega en la son los objetos
+    ##(Ejemplo se saca una fila de empleado se crea el objeto empleado y luego se agrega a la lista)
+    ## rectificar 
     empleados = []
     empRasos = []
     empDirec = []
@@ -34,115 +52,7 @@ def inicializacion():
     artistas = []
     bandas = []
 
-    if respuesta == 1: ##AUTOMATICO
-        
-        ##Empleados
-        for i in range(0,random.randint(50,101)):
-            empleados.append(Empleado(True,"None",len(empleados)))
 
-        ##Clasificacion Empleados (Raso o Directivo)
-        for i in empleados:
-            if i.tipo == "directivo":
-                empRasos.append(i)
-            else:
-                empDirec.append(i)
-        
-        ##Diseñadores
-        for i in range(0, random.randint(10, 50)):
-            disenadores.append(Disenador(True,"None",len(disenadores)))
-        
-        ##Agencias 
-        for i in range(0,random.randint(10,50)):
-            agencias.append(Agencia(True, len(agencias)))
-        
-        ##Portafolios
-        for i in range(0,random.randint(10,150)):
-            portafolios.append(Portafolio(len(portafolios)))
-
-        ##Modelos
-        for i in range(0,random.randint(50,200) ):
-            modelos.append(Modelo(True, "None", len(modelos),random.choice(agencias),random.choice(portafolios)))
-
-        ##Artistas 
-        for i in range(0, random.randint(10, 50)):
-            artistas.append(Artista(True,"None",len(artistas)))
-        
-        #Bandas
-        for i in range(0,random.randint(3, 10)):
-            bandas.append(Banda(True,"None",len(bandas)))
-
-
-
-    else:    ##MANUAL 
-        while True:
-            print("-------------------------------------------------------------")
-            try:
-                print("IMPORTANTE:SE DEBE CREAR DE EMPLEADO UN RASO Y UN DIRECTIVO (MINIMO DOS EMPLEADOS) ")
-                print("IMPORTANTE:SE DEBE CREAR UN DISEÑADOR,AGENCIAS,PORTAFOLIOS,MODELOS,ARTISTAS")
-                numEmpleados= int(input("Cuantos Empleados Quieres Crear: "))
-                numDisenadores= int(input("Cuantos Diseñadores Quieres Crear: "))
-                numAgencias = int(input("Cuantas Agencias Quieres Crear: "))
-                numPortafolios = int(input("Cuantos Portafolios De Modelos Quieres Crear: "))
-                numModelos= int(input("Cuantos Modelos Quieres Crear: "))
-                numArtistas = int(input("Cuantos Artistas Quieres Crear: "))
-                numBandas = int(input("Cuatas Bandas Deseas Crear?: "))
-                
-                break
-            except ValueError:
-                print("##Error##")
-                print("Ingresaste un valor no valio, Prueba otra vez ingresando un numero entero")
-
-
-        ##Empleados
-        for i in range(numEmpleados):
-            empleados.append(Empleado(False,"None",len(empleados)))
-
-        ##Clasificacion Empleados (Raso o Directivo)
-        for i in empleados:
-            if i.tipo == "raso":
-                empRasos.append(i)
-            else:
-                empDirec.append(i)
-        
-        ##Diseñadores
-        for i in range(0, numDisenadores):
-            disenadores.append(Disenador(False,"None",len(disenadores)))
-        
-        ##Agencias 
-        for i in range(numAgencias):
-            agencias.append(Agencia(False, len(agencias)))
-        
-        ##Portafolios
-        for i in range(numPortafolios):
-            portafolios.append(Portafolio(len(portafolios)))
-
-        ##Modelos
-        for i in range(numModelos):
-            modelos.append(Modelo(False, "None", len(modelos),random.choice(agencias),random.choice(portafolios)))
-        ##Artistas 
-        for i in range(numArtistas):
-            artistas.append(Artista(False,"None",len(artistas)))
-
-        ##Bandas
-        for i in range(numBandas):
-            bandas.append(Banda(False,"None",len(bandas)))
-    print("--------------- !!Generacion De Datos Exitosa!! ----------------")
-
-    return empleados,empRasos,empDirec,disenadores,agencias,portafolios,modelos,artistas,bandas
-
-
-
-def mostrar(lista):
-    for i in lista:
-        print(i)
-    print("----------------------------------------------------")
-
-
-
-
-def main():
-    nomEmpresa = input("Ingrese el nombre de la Empresa: ")
-    empleados,empRasos,empDirec,disenadores,agencias,portafolios,modelos,artistas,bandas=inicializacion()
 
     print(f"Empleados: {len(empleados)}\nDirectivos: {len(empDirec)}\nRasos: {len(empRasos)}\
 \nDiseñadores: {len(disenadores)}\nAgencias: {len(agencias)}\nModelos: {len(modelos)}\nArtistas: {len(artistas)}\nBandas: {len(bandas)}")
