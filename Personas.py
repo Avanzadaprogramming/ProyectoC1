@@ -35,6 +35,7 @@ class Persona :
             self.direccion = str((f"Calle {random.randint(1,300)} #{random.randint(1,300)}-{random.randint(1,100)}"))
 
         else:
+            
             self.nombre= input("Nombre: ")
             self.apellido = input("Apellido: ")
             self.numero = input("Numero: ")

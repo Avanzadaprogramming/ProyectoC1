@@ -16,9 +16,12 @@ class Modelo(Persona):
                     break
                 paises.append(lectura)
             #Colores 
-            ColorOjos = ["Cafe","Verde","Azul","Violeta","Negro"]
-            ColorPiel = ["Negro","Moreno","Blanco"]
-            CopasBusto = ["A","B","C","D"]
+            colorOjos = ["Cafe","Verde","Azul","Violeta","Negro"]
+            colorPiel = ["Negro","Moreno","Blanco"]
+            copasBusto = ["A","B","C","D"]
+            particularidades = ["Acromatopsia","Vitíligo","Difalia","Dismetría","Hermafroditismo"]
+
+
             
 
 
@@ -30,13 +33,14 @@ class Modelo(Persona):
             self.pasaporte = random.randint(1000000,9999999)                
             self.pais = paises[random.randint(0,len(paises)-1)]
             self.fechaNacimiento = str(f"{random.randint(1,30)}/{random.randint(1,12)}/{random.randint(1990,2020)}")
-            self.colorOjos = ColorOjos[random.randint(0,len(ColorOjos)-1)]
-            self.colorPiel = ColorPiel[random.randint(0,len(ColorPiel)-1)]
+            self.colorOjos = colorOjos[random.randint(0,len(colorOjos)-1)]
+            self.colorPiel = colorPiel[random.randint(0,len(colorPiel)-1)]
             self.estatura = str(random.randint(100,250))
             self.cintura = str(random.randint(30,80))
-            self.busto = CopasBusto[random.randint(0,len(CopasBusto)-1)]
+            self.busto = copasBusto[random.randint(0,len(copasBusto)-1)]
             self.tallaZapato = str(random.randint(25,45))
             self.peso = str(random.randint(40,120))
+            self.particularidad =[particularidades[random.randint(0,len(particularidades)-1)]]
         else:            
             print("---Ingrese la siguiente informacion de la Modelo---")
             self.id= Id
@@ -55,6 +59,7 @@ class Modelo(Persona):
             self.busto = input("Copa Busto: ")
             self.tallaZapato = input("Medida de Zapatos: ")
             self.peso = input("Peso: ")
+            self.particularidad = list(input("Ingrese las particularidades de la modelo separadas por espacio").strip().split())
 
             
 
@@ -62,12 +67,12 @@ class Modelo(Persona):
         return (f"------------Modelo #{self.id}------------\nID: {self.id}\nAgencia: #{self.agencia.id}\nPortafolio: #{self.portafolio.id}\nNombre: {self.nombre}\nApellido: {self.apellido}\nNumero: {self.numero}\
 \nDireccion: {self.getDireccion()}\nPasaporte {self.pasaporte}\nPais de Origen: {self.pais}\nFecha Nacimiento: {self.fechaNacimiento}\
 \n------Descripción Fisica------\nColor Ojos: {self.colorOjos}\nColor Piel: {self.colorPiel}\nEstatura: {self.estatura} cm\
-\nDiametro Cintura: {self.cintura} cm\nCopa Busto: {self.busto}\nTalla Zapatos: {self.tallaZapato}\nPeso: {self.peso} Kilos")
+\nDiametro Cintura: {self.cintura} cm\nCopa Busto: {self.busto}\nTalla Zapatos: {self.tallaZapato}\nPeso: {self.peso} Kilos\nParticularidades: {self.particularidad}")
 
 
 
 
 
 
-#juanito = Modelo(True,"m",0,0)
+#juanito = Modelo(True,"m",3121,21,132)
 #print(juanito)

@@ -1,3 +1,4 @@
+
 from Empleado  import Empleado
 from Disenador import Disenador
 from Agencias import Agencia 
@@ -8,9 +9,10 @@ from Pabellones import Pabellon
 from Desfiles import Desfile
 from datetime import datetime
 from Eventos import Evento
+from Bandas import Banda
 
 import random
-#Hecho Por Juan David Santamaria Beltran
+
 
 def inicializacion():
     while True:
@@ -30,6 +32,7 @@ def inicializacion():
     portafolios = []
     modelos = []
     artistas = []
+    bandas = []
 
     if respuesta == 1: ##AUTOMATICO
         
@@ -63,6 +66,10 @@ def inicializacion():
         ##Artistas 
         for i in range(0, random.randint(10, 50)):
             artistas.append(Artista(True,"None",len(artistas)))
+        
+        #Bandas
+        for i in range(0,random.randint(3, 10)):
+            bandas.append(Banda(True,"None",len(bandas)))
 
 
 
@@ -78,6 +85,7 @@ def inicializacion():
                 numPortafolios = int(input("Cuantos Portafolios De Modelos Quieres Crear: "))
                 numModelos= int(input("Cuantos Modelos Quieres Crear: "))
                 numArtistas = int(input("Cuantos Artistas Quieres Crear: "))
+                numBandas = int(input("Cuatas Bandas Deseas Crear?: "))
                 
                 break
             except ValueError:
@@ -114,9 +122,13 @@ def inicializacion():
         ##Artistas 
         for i in range(numArtistas):
             artistas.append(Artista(False,"None",len(artistas)))
+
+        ##Bandas
+        for i in range(numBandas):
+            bandas.append(Banda(False,"None",len(bandas)))
     print("--------------- !!Generacion De Datos Exitosa!! ----------------")
 
-    return empleados,empRasos,empDirec,disenadores,agencias,portafolios,modelos,artistas
+    return empleados,empRasos,empDirec,disenadores,agencias,portafolios,modelos,artistas,bandas
 
 
 
@@ -128,15 +140,12 @@ def mostrar(lista):
 
 
 
-
-
-
 def main():
     nomEmpresa = input("Ingrese el nombre de la Empresa: ")
-    empleados,empRasos,empDirec,disenadores,agencias,portafolios,modelos,artistas=inicializacion()
+    empleados,empRasos,empDirec,disenadores,agencias,portafolios,modelos,artistas,bandas=inicializacion()
 
     print(f"Empleados: {len(empleados)}\nDirectivos: {len(empDirec)}\nRasos: {len(empRasos)}\
-\nDiseñadores: {len(disenadores)}\nAgencias: {len(agencias)}\nModelos: {len(modelos)}\nArtistas: {len(artistas)}")
+\nDiseñadores: {len(disenadores)}\nAgencias: {len(agencias)}\nModelos: {len(modelos)}\nArtistas: {len(artistas)}\nBandas: {len(bandas)}")
     
     pabellones= []
     desfiles = []
@@ -386,11 +395,13 @@ def main():
                 print(f"5.Ver Todas las Agencias")
                 print(f"6.Ver Todas las Modelos")
                 print(f"7.Ver Todos los Artistas")
-                print(f"8.Agregar Empleados")
-                print(f"9.Agregar Diseñador")
-                print(f"10.Agregar Modelo")
-                print(f"11.Agregar Artista")
-                print(f"12.Salir a Menu Principal")
+                print(f"8.Ver Todos las Bandas")
+                print(f"9.Agregar Empleados")
+                print(f"10.Agregar Diseñador")
+                print(f"11.Agregar Modelo")
+                print(f"12.Agregar Artista")
+                print(f"13.Agregar Banda")
+                print(f"14.Salir a Menu Principal")
                 print("---------------------------------------------------------")
                 print("Si no ve ningun cambio en la pantalla mirar arriba del Menu")
 
@@ -416,7 +427,9 @@ def main():
                     mostrar(modelos)
                 elif respuesta2 == 7:
                     mostrar(artistas)
-                elif respuesta2 == 8:
+                elif respuesta2 == 8:## Mirar Error
+                    mostrar(bandas)
+                elif respuesta2 == 9:
                     print("-------------------Crear Empleado---------------------")
                     print("¿Desea Crear El Empleado Automaticamente?")
                     print("1.Si")
@@ -438,7 +451,7 @@ def main():
                         print("---Empleado Creado---")
                     else:
                         print("###Opcion Erronea###")
-                elif respuesta2 == 9:
+                elif respuesta2 == 10:
                     print("-------------------Agregar Diseñador---------------------")
                     print("¿Desea Crear El Diseñador Automaticamente?")
                     print("1.Si")
@@ -460,7 +473,7 @@ def main():
                         print("---Diseñador Creado---")
                     else:
                         print("###Opcion Erronea###")
-                elif respuesta2 == 10:
+                elif respuesta2 == 11:
 
                     print("-------------------Agregar Modelo---------------------")
                     print("¿Desea Crear El Evento Automaticamente?")
@@ -483,7 +496,7 @@ def main():
                         print("---Modelo Creada---")
                     else:
                         print("###Opcion Erronea###")   
-                elif respuesta2 == 11:
+                elif respuesta2 == 12:
                     print("-------------------Agregar Artista---------------------")
                     print("¿Desea Crear El Artista Automaticamente?")
                     print("1.Si")
@@ -504,8 +517,34 @@ def main():
                         artistas.append(Artista(False,"none",len(artistas)))
                         print("---Artista Creado---")
                     else:
-                        print("###Opcion Erronea###")                
-                elif respuesta2 == 12:
+                        print("###Opcion Erronea###") 
+                elif respuesta2 == 13:
+                    print("-------------------Agregar Banda---------------------")
+                    print("¿Desea Crear La Banda Automaticamente?")
+                    print("1.Si")
+                    print("2.No")
+
+                    while True:
+                        try:
+                            bandaAutomatico = int(input(f"Respuesta: "))
+                            break
+                        except ValueError:
+                            print("##Error##")
+                            print("Ingresaste un valor no valio, Prueba otra vez ingresando un numero entero")
+
+                    if bandaAutomatico == 1:
+                        
+                        bandas.append(Banda(True,"none",len(bandas)))
+                        print("---Banda Creado---")
+
+                    elif bandaAutomatico == 2:
+
+                        bandas.append(Banda(False,"None",len(bandas)))
+                        print("---Banda Creado---")
+
+                    else:
+                        print("###Opcion Erronea###")                    
+                elif respuesta2 == 14:
                     break           
                 else:
                     print("###Opcion Erronea###")

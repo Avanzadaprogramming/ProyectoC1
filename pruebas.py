@@ -1,9 +1,7 @@
 import random
-from datetime import datetime
+def main():
+    a =str(random.randint(1,28))+"/"+str(random.randint(1,12))+"/"+str(random.randint(1990,2021))
+    print(a)
 
-inicio = datetime(2017, 1, 30)
-final =  datetime(2015, 5, 28)
 
-random_date = inicio + (final - inicio) * random.random()
-
-print(random_date.time())
+main()

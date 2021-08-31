@@ -10,7 +10,7 @@ class Empleado(Persona):
             Unis = baseUnis.readline().strip().split(",")
 
             self.id = IdEmpleado
-            self.universidad = Unis[random.randint(0,len(Unis)-1)]
+            
             self.salario= random.randint(877802,5000000)
 
             if self.salario> 1500000:
@@ -20,12 +20,16 @@ class Empleado(Persona):
             self.salario = str(self.salario)
             self.tipo = tipo.lower()
             self.ocupado = "Disponible"
+            if self.tipo == "directivo":
+                self.universidad = input("Nombre Universidad: ")
+            else:
+                self.univeri = "No Aplica"
 
         else:
-            print("---Ingrese la siguiente informacion del Empleado---")
+            print("---Ingrese la siguiente informacion del Empleado---") ##CAMBIO 2021
             Persona.__init__(self,Automatico, Genero="None")
             self.id = IdEmpleado
-            self.universidad = input("Nombre Universidad: ")
+            
             self.salario = input("Ingrese salario: ")
             while True:
                 self.tipo = (input("Ingrese Directivo o Raso: ")).lower()
@@ -34,6 +38,10 @@ class Empleado(Persona):
                 else:
                     print("---Tipo invalido intentelo de nuevo---")
             self.ocupado = "Disponible"
+            if self.tipo == "directivo":
+                self.universidad = input("Nombre Universidad: ")
+            else:
+                self.univeri = "No Aplica"
 
             
     def __str__(self):
